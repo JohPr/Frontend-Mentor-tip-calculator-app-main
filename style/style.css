@@ -1,0 +1,305 @@
+
+/* space-mono-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/space-mono-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* space-mono-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/space-mono-v13-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Space Mono', sans-serif;
+}
+
+:root {
+    --strong-cyan: hsl(172, 67%, 45%);
+    --very-dark-cyan: hsl(183, 100%, 15%);
+    --dark-grayish-cyan: hsl(186, 14%, 43%);
+    --grayish-cyan: hsl(184, 14%, 56%);
+    --light-grayish-cyan: hsl(185, 41%, 84%);
+    --very-light-grayish-cyan: hsl(189, 41%, 97%);
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 0%);
+}
+
+.main {
+    height: auto;
+    width: 100%;
+    background: var(--light-grayish-cyan);
+}
+
+.main-grid {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    place-content: center;
+    gap: 4rem;
+}
+
+.main-grid h1 {
+    display: block;
+    letter-spacing: .6rem;
+    color: var(--very-dark-cyan);
+    text-align: center;
+}
+
+.main-grid h1::after {
+    content: "TTER";
+    display: block;
+    
+}
+
+.calculator {
+    width: clamp(50rem, 50vw, 65rem);
+    height: auto;
+    padding: 2rem;
+    background: var(--white);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1rem;
+    border-radius: 40px;
+}
+
+@media (max-width: 1759px) {
+    .calculator {
+        width: clamp(30rem, 60vw, 65rem);
+    }
+
+    .main-grid {
+        height: 120vh;
+    }
+}
+
+@media (max-width: 700px) {
+    .calculator {
+        width: 100%;
+    }
+
+    
+}
+
+/* === Input Site === */
+
+.input {
+    padding: 2rem
+}
+
+.label {
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+    font-weight: 700;
+    color: var(--very-dark-cyan);
+    margin-bottom: .5rem;
+    display: inline-block;
+}
+
+.input-element {
+    display: block;
+    width: 100%;
+    height: 3.2rem;
+    padding: .5rem .8rem;
+    border-radius: 10px;
+    border: none;
+    background: var(--very-light-grayish-cyan);
+    text-align: right;
+    font-size: 1.8rem;
+    font-family: 'Space Mono';
+    color: var(--grayish-cyan);
+    font-weight: 700;
+    margin: 0;
+}
+
+#bill {
+    margin-bottom: 4rem;
+}
+
+
+.radio-btn {
+    display: none;
+}
+
+.radio-btn:checked + label {
+    background: var(--strong-cyan);
+}
+
+.radio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.label-btn {
+    padding: .4rem 0;
+    background: var(--very-dark-cyan);
+    display: inline-block;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-family: 'Space Mono';
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.label-btn::after {
+    content: "%";
+}
+
+.custom {
+    display: block;
+    width: 100%;
+    padding: .5rem .8rem;
+    border-radius: 10px;
+    border: none;
+    background: var(--very-light-grayish-cyan);
+    text-align: right;
+    font-size: 1.4rem;
+    font-family: 'Space Mono';
+    color: var(--grayish-cyan);
+    font-weight: 700;
+    margin: 0;
+}
+
+.cb-zero {
+    float: right;
+    color: red;
+}
+
+
+/* === Output Site === */
+
+.output {
+    background: var(--very-dark-cyan);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+}
+
+.output-div {
+    width: 100%;
+    height: 7rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    place-content: center;
+    gap: 2rem;
+}
+
+.output-div:last-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.output-div h2 {
+    color: var(--white);
+    font-size: 1.3rem;
+    margin: 0;
+    display: grid;
+    align-items: center;
+}
+
+.output-div h2::after {
+    content: "/ person";
+    color: var(--grayish-cyan);
+    font-size: .9rem;
+}
+
+.output-div span::before {
+    content: "$";
+}
+
+
+.output-div span {
+    color: var(--strong-cyan);
+    font-size: 2.5rem;
+    text-align: right;
+    font-family: 'Space Mono';
+    font-weight: 700;
+}
+
+
+.history::after {
+    content: url(../images/bookmark-fill.svg);
+}
+
+.history + div {
+    width: 80%;
+    height: 7rem;
+    background: var(--white);
+    display: inline-block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transition: transform .5s;
+    transform-origin: left center;
+}
+
+.history + div::-webkit-scrollbar {
+    width: 1rem;
+}
+
+.history + div::-webkit-scrollbar-track {
+    background: var(--very-dark-cyan);
+}
+
+.history + div::-webkit-scrollbar-thumb {
+    background: var(--strong-cyan);
+    border-radius: 10px;
+}
+
+.history + div h2{
+    text-align: center;
+    color: var(--dark-grayish-cyan);
+    font-size: 1.2rem;
+    margin: 0;
+    border-bottom: 1px solid var(--black);
+}
+
+.delete {
+    display: block;
+    margin-inline: auto;
+    text-align: center;
+    text-decoration: none;
+    color: var(--strong-cyan);
+    padding-block: .2rem;
+}
+
+.history-element {
+    padding-block: .3rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--dark-grayish-cyan);
+}
+
+.button {
+    width: 80%;
+    height: 3rem;
+    background: var(--dark-grayish-cyan);
+    display: grid;
+    place-content: center;
+    font-size: 1.4rem;
+    color: var(--very-dark-cyan);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 2rem auto 0;
+}
+
+.button:hover {
+    background: var(--strong-cyan);
+}
+
+.reset {
+    margin-top: .5rem;
+}
